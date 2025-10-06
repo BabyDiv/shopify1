@@ -1,65 +1,57 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
-
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      {{ 'icon-account.svg' | inline_asset_content | link_to: routes.account_url }}
+<header class="main-header">
+  <nav class="main-header__nav">
+    <ul class="main-header__list">
+      <li class="main-header__item">
+        <a href="index.html">Главная</a>
+      </li>
+      <li class="main-header__item">
+        <a href="media.html">Фото и видео</a>
+      </li>
+      <li class="main-header__item">
+        <a href="review.html">Форма отзыва</a>
+      </li>
+      <li class="main-header__item">
+        <a href="academy.html">HTML Academy</a>
+      </li>
+    </ul>
+  </nav>
+  <a href="{{ routes.root_url }}" class="main-header__logo" aria-label="Логотип">
+    {% if section.settings.logo %}
+      <img
+        src="{{ section.settings.logo | image_url }}"
+        alt="Логотип"
+        width="{{ section.settings.logo.width }}"
+        height="{{ section.settings.logo.height }}"
+      />
+    {% else %}
+      {{ shop.name }}
     {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
-
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
-  </div>
+  </a>   
+  <button class="main-header__burger" aria-label="Toggle menu">
+    <svg class="main-header__icon-open" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.9 0H0V4H22.9V0Z" fill="#81B3D2"/>
+      <path d="M22.9 9H0V13H22.9V9Z" fill="#81B3D2"/>
+      <path d="M22.9 18H0V22H22.9V18Z" fill="#81B3D2"/>
+    </svg>
+    <svg class="main-header__icon-close" width="23" height="22" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.2 2.8L19.4 0L11.1 8.3L2.8 0L0 2.8L8.3 11.1L0 19.4L2.8 22.2L11.1 13.9L19.4 22.2L22.2 19.4L13.9 11.1L22.2 2.8Z" fill="white"/>
+    </svg>
+  </button>
 </header>
-
-{% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a {
-    position: relative;
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default"
     }
   ]
 }

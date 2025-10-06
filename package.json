@@ -1,0 +1,7 @@
+{
+  "name": "sedona",
+  "scripts": {
+    "push-qa": "shopify theme push --environment qa",
+    "dev": "shopify theme dev --environment dev"
+  }
+}

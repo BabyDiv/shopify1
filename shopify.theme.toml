@@ -1,0 +1,7 @@
+[environments.dev]
+store = "sedona-9397.myshopify.com"
+theme = "184343626098"
+
+[environments.qa]
+store = "sedona-9397.myshopify.com"
+theme = "184349557106"

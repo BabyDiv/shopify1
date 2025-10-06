@@ -1,0 +1,30 @@
+<section class="hero">
+  <div class="hero__container">
+    <h1 class="hero__title visually-hidden">Travel agency offering tours to Sedona</h1>
+    <p class="hero__text visually-hidden">Book a tour to Sedona</p>
+    <img
+      src="{{ section.settings.bg-hero | image_url }}"
+      alt="Логотип"
+      width="{{ section.settings.bg-hero.width }}"
+      height="{{ section.settings.bg-hero.height }}"
+    />
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg-hero",
+      "label": "bg-hero"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}
