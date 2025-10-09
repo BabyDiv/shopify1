@@ -1,3 +1,25 @@
+{% comment %} hero css style file {% endcomment %}
+
+<style>
+
+  @media ()
+  .hero__container {
+    background-image: url({{ section.settings.background_mobile_2x }})
+  }
+  @media (min-width: 1200px and retina) {
+    .hero__container {
+      background-image: url({{ section.settings.background_desktop_2x }})
+    }
+  }
+  @media (min-width: 1200px and not-retina) {
+    .hero__container {
+      background-image: url({{ section.settings.background_desktop_1x }})
+    }
+  }
+
+  @media (min-width: 768px and ) {}
+</style>
+
 <section class="hero">
   <div class="hero__container">
     <h1 class="hero__title visually-hidden">Travel agency offering tours to Sedona</h1>
